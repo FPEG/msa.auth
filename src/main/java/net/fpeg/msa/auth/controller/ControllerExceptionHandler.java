@@ -1,5 +1,6 @@
 package net.fpeg.msa.auth.controller;
 
+import net.fpeg.msa.auth.exception.UserExistException;
 import net.fpeg.msa.common.dto.BaseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -25,4 +26,13 @@ public class ControllerExceptionHandler {
     public BaseDto handleUserNotExistException(BadCredentialsException ex) {
         return new BaseDto(ex.getMessage());
     }
+
+    @ExceptionHandler(UserExistException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public BaseDto handleUserExistException(UserExistException ex) {
+        return new BaseDto(ex.getMessage());
+    }
 }
+
+

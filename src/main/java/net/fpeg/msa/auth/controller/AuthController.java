@@ -1,5 +1,6 @@
 package net.fpeg.msa.auth.controller;
 
+import net.fpeg.msa.auth.exception.UserExistException;
 import net.fpeg.msa.auth.service.AuthService;
 import net.fpeg.msa.common.dto.BaseDto;
 import net.fpeg.msa.common.dto.LoginDto;
@@ -17,8 +18,24 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
+    /**
+     * Login base dto.
+     *
+     * @param loginDto the login dto
+     * @return the base dto
+     */
     @PostMapping("/login")
     public BaseDto login(@RequestBody LoginDto loginDto) {
         return new BaseDto(authService.login(loginDto.getUsername(), loginDto.getPassword()));
+    }
+
+    /**
+     * Register.
+     *
+     * @param loginDto the login dto
+     */
+    @PostMapping("/register")
+    public void register(@RequestBody LoginDto loginDto) throws UserExistException {
+        authService.register(loginDto.getUsername(), loginDto.getPassword());
     }
 }
