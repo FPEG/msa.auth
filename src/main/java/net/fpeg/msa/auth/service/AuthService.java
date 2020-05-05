@@ -31,6 +31,8 @@ public class AuthService {
     @Autowired
     JwtUtil jwtUtil;
 
+    @Autowired
+    FeignWordUserService feignWordUserService;
     /**
      * @param username 登陆用户名
      * @param password 登陆密码
@@ -58,6 +60,7 @@ public class AuthService {
         user.setAuthorities(List.of(authority));
         try {
             userDao.save(user);
+            feignWordUserService.register(user.getId());
         }
         catch (DataIntegrityViolationException ex)
         {
