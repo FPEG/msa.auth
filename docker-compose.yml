@@ -5,7 +5,7 @@ networks:
     external: true
 
 services:
-  msa-gateway:
+  msa-auth:
     image: fpeg/msa-auth:latest
     restart: on-failure
     networks:
