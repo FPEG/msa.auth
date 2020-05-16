@@ -49,7 +49,7 @@ gradle \
  -DsystemProp.https.proxyHost=${env.MYPROXY_HOST} \
  -DsystemProp.https.proxyPort=${env.MYPROXY_PORT} \
  -DsystemProp.https.nonProxyHosts=121.36.41.244 \
-""") + """
+""") + """ \
  docker
 """
 				sh 'gradle dockerTagLatest'
