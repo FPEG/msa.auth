@@ -43,12 +43,12 @@ pipeline {
 				sh """
 gradle \
 """ + ((env.MYPROXY_HOST == null)? "" : """ \
- -PsystemProp.http.proxyHost=${env.MYPROXY_HOST} \
- -PsystemProp.http.proxyPort=${env.MYPROXY_PORT} \
- -PsystemProp.http.nonProxyHosts=121.36.41.244 \
- -PsystemProp.https.proxyHost=${env.MYPROXY_HOST} \
- -PsystemProp.https.proxyPort=${env.MYPROXY_PORT} \
- -PsystemProp.https.nonProxyHosts=121.36.41.244 \
+ -Dhttp.proxyHost=${env.MYPROXY_HOST} \
+ -Dhttp.proxyPort=${env.MYPROXY_PORT} \
+ -Dhttp.nonProxyHosts=121.36.41.244 \
+ -Dhttps.proxyHost=${env.MYPROXY_HOST} \
+ -Dhttps.proxyPort=${env.MYPROXY_PORT} \
+ -Dhttps.nonProxyHosts=121.36.41.244 \
 """) + """ \
  docker
 """
