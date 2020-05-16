@@ -1,6 +1,6 @@
 version: "3.7"
 networks:
-  msa-test-net:
+  msa-web-net:
     name: msa-web-net
     external: true
 
@@ -9,4 +9,4 @@ services:
     image: fpeg/msa-auth:latest
     restart: on-failure
     networks:
-      msa-test-net:
+      msa-web-net:
