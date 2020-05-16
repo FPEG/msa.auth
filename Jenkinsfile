@@ -41,7 +41,8 @@ pipeline {
                 }
             steps {
 				sh """
-gradle \ """ + ((env.MYPROXY_HOST == null)? "" : """
+gradle \
+""" + ((env.MYPROXY_HOST == null)? "" : """ \
  -DsystemProp.http.proxyHost=${env.MYPROXY_HOST} \
  -DsystemProp.http.proxyPort=${env.MYPROXY_PORT} \
  -DsystemProp.http.nonProxyHosts=121.36.41.244 \
