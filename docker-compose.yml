@@ -1,7 +1,7 @@
 version: "3.7"
 networks:
   msa-test-net:
-    name: msa-test-net
+    name: msa-web-net
     external: true
 
 services:
