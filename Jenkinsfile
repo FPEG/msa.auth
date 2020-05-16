@@ -32,24 +32,24 @@ pipeline {
 -v /var/run/docker.sock:/var/run/docker.sock
 -v /usr/bin/docker:/usr/bin/docker
 -e MYENV="${env.MYENV}"
-""" + (env.MYPROXY_HOST == null)? "" : """
+""" + ((env.MYPROXY_HOST == null)? "" : """
 -e HTTP_PROXY="http://${env.MYPROXY_HOST}:${env.MYPROXY_PORT}"
 -e HTTPS_PROXY="http://${env.MYPROXY_HOST}:${env.MYPROXY_PORT}"
 -e NO_PROXY="121.36.41.244"
-"""
+""")
                     }
                 }
             steps {
 				sh """
 gradle \
-"""+ (env.MYPROXY_HOST == null)? "" : """
+""" + ((env.MYPROXY_HOST == null)? "" : """
  -DsystemProp.http.proxyHost=${env.MYPROXY_HOST} \
  -DsystemProp.http.proxyPort=${env.MYPROXY_PORT} \
  -DsystemProp.http.nonProxyHosts=121.36.41.244 \
  -DsystemProp.https.proxyHost=${env.MYPROXY_HOST} \
  -DsystemProp.https.proxyPort=${env.MYPROXY_PORT} \
  -DsystemProp.https.nonProxyHosts=121.36.41.244 \
-""" +
+""") +
 """
  docker
 """
