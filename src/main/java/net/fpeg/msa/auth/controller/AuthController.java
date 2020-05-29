@@ -31,7 +31,6 @@ public class AuthController {
 
     /**
      * Register.
-     *
      * @param loginDto the login dto
      */
     @PostMapping("/register")
