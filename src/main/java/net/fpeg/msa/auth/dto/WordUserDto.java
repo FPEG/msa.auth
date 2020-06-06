@@ -7,6 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserInfoDto {
+public class WordUserDto {
     String username;
 }
